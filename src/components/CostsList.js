@@ -38,12 +38,15 @@ const addFilterByYear =  (_yearFilter)=>{
 
 
   }
-  else{
 
-    setChecked(false)
+    
+    else{
 
-
-  }
+      setChecked(false)
+  
+  
+    }
+  
 
 }
 
@@ -85,12 +88,12 @@ const addFilterByYear =  (_yearFilter)=>{
       {isFilterMonth||isFilterYear ?
         filterData.map(item =>{
   return(
-      <CostItem  sortByMonth={props.sortByMonth} key={item.id} item={item}/>
+      <CostItem   key={item.id} item={item}/>
 
   )
 }): props.costs_ar.map(item =>{
   return(
-      <CostItem  sortByMonth={props.sortByMonth} key={item.id} item={item}/>
+      <CostItem key={item.id} item={item}/>
 
   )
 })

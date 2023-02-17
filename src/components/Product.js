@@ -2,7 +2,8 @@ import React ,{useState,useEffect} from 'react'
 import ProductInput from './ProductInput';
 import {sortBy} from 'lodash'
 import CostsList from './CostsList';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Product(props) {
 
     let [costs_ar,setCostAr]=useState([]);
@@ -31,6 +32,9 @@ export default function Product(props) {
     
 }
 const removeAllCosts =()=>{
+  toast.warning('Clear costs list !', {
+    position: toast.POSITION.TOP_RIGHT
+});
   saveLocal([])
 }
 

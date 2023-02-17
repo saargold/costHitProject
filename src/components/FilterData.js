@@ -4,6 +4,8 @@ export default function FilterData(props) {
 
     const filterByMonthRef = useRef();
     const filterByYearRef = useRef();
+
+
     const filterBtnMonth  =async () =>{
         let param=0;
         if( filterByMonthRef!= null){
@@ -29,7 +31,6 @@ export default function FilterData(props) {
 
 
 
-
   return (
     <div>
       
@@ -40,6 +41,8 @@ export default function FilterData(props) {
 
     <input type="text" placeholder='Enter Year Value' className="form-control mb-2 mt-2" ref={filterByYearRef}/>
     <button className='btn btn-danger me-2 text-light mb-2' onClick={filterBtnYear}>Filter By Year</button>
+
+
 
     </div>
 
