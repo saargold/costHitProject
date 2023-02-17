@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.carditem{
+  font-size: 17px;
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+
+}
