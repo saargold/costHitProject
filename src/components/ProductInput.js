@@ -49,7 +49,7 @@ const ProductInput = (props) => {
       <h3>Cost Name:</h3>
       <input ref={itemNameRef} type="text" className='form-control' required  />
       <h3>Cost Sum:</h3>
-      <input  ref={itemSumRef} type="text"  className='form-control' required  /> 
+      <input  ref={itemSumRef} type="number"  className='form-control' required  /> 
       <h3>Cost Description:</h3>
       <textarea  ref={itemDescriptionRef} type="text"  className='form-control' required /> 
      <h3>Choose Category</h3>
