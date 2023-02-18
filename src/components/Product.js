@@ -38,13 +38,6 @@ const removeAllCosts =()=>{
   saveLocal([])
 }
 
-// const sortByMonth =(_id)=>{
-//   let temp_ar = costs_ar.filter(item =>item.id == _id);
-//   console.log(_id +"id")
-//   saveLocal(temp_ar)
-// }
-  
-
   return (
 
     <div className='container'>
