@@ -1,5 +1,6 @@
 import '../App.css';
 import React from "react";
+// Saar Goldshtein 312593239 & Shahar Shemesh 315049460
 
 export const Item = (props) => {
     // Extract the details of the item passed as props
