@@ -2,6 +2,7 @@ import React, { useRef,useState } from 'react'
 import { Item } from "./Item";
 import FilterData from './FilterData';
 import {checkbox} from './checkbox.css'
+// Saar Goldshtein 312593239 & Shahar Shemesh 315049460
 
 export const ItemList = (props) => {
     const [checked, setChecked] = useState(false); // state to toggle filter visibility
