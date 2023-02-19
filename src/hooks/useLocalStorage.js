@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// Saar Goldshtein 312593239 & Shahar Shemesh 315049460
 
 // Create a custom hook called useLocalStorage that takes a key and an initial value as arguments
 export const useLocalStorage = (key, initialValue) => {
