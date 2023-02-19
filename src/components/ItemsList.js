@@ -1,107 +1,73 @@
-// import React from "react";
-// import { Item } from "./Item";
-
-// export const ItemList = (props) => {
-
-// 	if(props.items.length === 0){
-//         return <h2 className="expenses-list__fallback">Found no items.</h2>;
-//     }
-
-//     return(
-//         <ul>
-//             {props.items.map((item) => (
-//                 <Item
-//                     description={item.description}
-//                     cost={item.cost}
-//                     declarationYear={item.declarationYear}
-//                     declarationMonth={item.declarationMonth}
-//                     category={item.category}
-//                 />
-//             ))};
-//         </ul>
-//     ); 
-// };
-
-
 import React, { useRef,useState } from 'react'
 import { Item } from "./Item";
 import FilterData from './FilterData';
 import {checkbox} from './checkbox.css'
 
-
 export const ItemList = (props) => {
-    const [checked, setChecked] = useState(false); 
-    const [filterMonth, setFilterMonth] = useState(null); 
-    const [filterYear, setFilterYear] = useState( null); 
-    const [isFilterMonth, setIsFilterMonth] = useState(false); 
-    const [isFilterYear, setIsFilterYear] = useState(false); 
+    const [checked, setChecked] = useState(false); // state to toggle filter visibility
+    const [filterMonth, setFilterMonth] = useState(null); // state to hold filter month
+    const [filterYear, setFilterYear] = useState(null); // state to hold filter year
+    const [isFilterMonth, setIsFilterMonth] = useState(false); // state to show if there is a filter by month
+    const [isFilterYear, setIsFilterYear] = useState(false); // state to show if there is a filter by year
 
+    // function to toggle filter visibility
+    const handleChange = () => {
+        setChecked(!checked);
+    };
 
-    const handleChange = () => { 
-        setChecked(!checked); 
-    }; 
+    // function to add filter by month
+    const addFilterByMonth = (monthFilter)=>{
+        if(monthFilter!= null){
+            setFilterMonth(monthFilter);
+            setIsFilterMonth(true);
+            setIsFilterYear(false);
+            setChecked(false);
+        };
+    };
 
-    const addFilterByMonth =  (_monthFilter)=>{
-        console.log(_monthFilter)
-        if(_monthFilter!= null){
-        setFilterMonth(_monthFilter)
-        setIsFilterMonth(true)
-        setIsFilterYear(false)
-        setChecked(false)
-        }
-    }
-
-    const addFilterByYear =  (_yearFilter)=>{
-    console.log(_yearFilter)
-    if(_yearFilter!= null){
-        setFilterYear(_yearFilter)
-        setIsFilterYear(true)
-        setIsFilterMonth(false)
-        setChecked(false)
-    }
-        else
-        {
-        setChecked(false)
-        }
-    }
-
-    const filterData = props.items.filter(item => {
-        if(isFilterMonth){
-        return item.declarationMonth == filterMonth;
+    // function to add filter by year
+    const addFilterByYear = (yearFilter) => {
+        if(yearFilter!= null){
+            setFilterYear(yearFilter);
+            setIsFilterYear(true);
+            setIsFilterMonth(false);
+            setChecked(false);
         }
         else{
-        console.log(filterYear)
-        return item.declarationYear == filterYear;
+            setChecked(false);
+        };
+    };
+
+    // filter data based on current filter settings
+    const filterData = props.items.filter(item => {
+        if(isFilterMonth){
+            return item.declarationMonth == filterMonth;
+        }
+        else{
+            return item.declarationYear == filterYear;
         }
     });
-    return (
+
+    return(
         <div>
-            <div className='filter-data' >
-                <h2>Filter Data
-                {/* <input type="checkbox" onChange={handleChange} id="toggle"/> */}
-                </h2>
+            <div id='element1' >
+                <h3>Filter Data</h3>
+                <input type="checkbox" id="switch" onChange={handleChange}/><label htmlFor="switch">Toggle</label>
+            </div>
 
-        </div>
-                <input type="checkbox" id="switch" onChange={handleChange} /><label htmlFor="switch">Toggle</label>
-        <ul id='list' className='list'>
-            {checked ? <FilterData addFilterByMonth={addFilterByMonth}  addFilterByYear={addFilterByYear}/> : ' '}
-        
-        {isFilterMonth? <h2> Filter By Month {filterMonth}</h2> : ''}
-        {isFilterYear? <h2> Filter By Year {filterYear}</h2> : ''}
+            <ul id='list' className='list'>
+                {checked ? <FilterData addFilterByMonth={addFilterByMonth} addFilterByYear={addFilterByYear}/> : ' '}
 
-        {!isFilterMonth && !isFilterYear?<h2>Costs you added:</h2>: '' }
-        
-        { isFilterMonth||isFilterYear ?
-                filterData.map(item =>{ return( <Item key={item.id} item={item}/>); })  : 
-                    props.items.map( (item) => {
-                        return(
-                            
-                                <Item key={item.id} item={item}/>
-                            
-                            )
-                        })
-        }
-        </ul>
+                {isFilterMonth ? <h2> Filter By Month {filterMonth}</h2> : ''}
+                {isFilterYear ? <h2> Filter By Year {filterYear}</h2> : ''}
+
+                {!isFilterMonth && !isFilterYear?<h2>Costs you added:</h2>: '' }
+
+                {isFilterMonth || isFilterYear ?
+                    filterData.map(item => { return( <Item key={item.id} item={item}/>); }) :
+                    props.items.map((item) => { return( <Item key={item.id} item={item}/> ); })
+                }
+            </ul>
         </div>
     );
 };

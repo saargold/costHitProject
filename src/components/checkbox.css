@@ -2,7 +2,15 @@ input[type=checkbox]{
 	height: 0;
 	width: 0;
 	visibility: hidden;
+    margin-block: auto;
+    justify-content: center;
+
 }
+
+#element1 {
+    display:inline-block;
+    margin-right:10px;
+} 
 
 label {
 	cursor: pointer;
@@ -13,6 +21,7 @@ label {
 	display: block;
 	border-radius: 100px;
 	position: relative;
+    margin: auto;
 }
 
 label:after {
@@ -32,18 +41,10 @@ input:checked + label {
 }
 
 input:checked + label:after {
-	left: calc(100% - 6 px);
+	left: calc(100% - 5px);
 	transform: translateX(-100%);
 }
 
 label:active:after {
 	width: 65px;
-}
-
-    /* // centering */
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
 }
