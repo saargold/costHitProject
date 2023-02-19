@@ -9,6 +9,7 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { ItemList } from './components/ItemsList';
 import { ReactDOM } from 'react';
 
+// Saar Goldshtein 312593239 & Shahar Shemesh 315049460
 
 export default function App() {
   // useLocalStorage is a custom hook that returns an array with three values:
