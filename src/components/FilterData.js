@@ -1,5 +1,6 @@
 import React, { useRef,useState } from 'react'
 import {checkbox} from './checkbox.css'
+// Saar Goldshtein 312593239 & Shahar Shemesh 315049460
 
 export default function FilterData(props) {
     // create references to the input fields
